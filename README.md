@@ -19,5 +19,12 @@ We present an GAN-powered image processing framework for enhancing and transform
 # Usage
 Clone the repository using 
 ```bash
-git clone https://github.com/<your-username>/CAT.git
+git clone https://github.com/<your-username>/CAT.git](https://github.com/Princiya1990/CATDeblurring
 ```
+1. To Run CAT:
+   1. Specify the **input_folder** that has the faceimages and the **output_folder** to get the composite sketches.
+   2. ```python cat.py```
+   3. Adjust gamma in the ```adjust_gamma()``` function for brightness/contrast fine-tuning.
+    
+2.
+   
