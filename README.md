@@ -43,5 +43,7 @@ git clone https://github.com/Princiya1990/CATDeblurring
    3. After training, the generated images in the ```generated_images/``` folder.
 
 # Visual Gallery
+Here we've shown sample images of the deblurring process across the adopted datasets, transitioning from Ground images to Blurred inputs.
 
+<img src="images/gallery.PNG" alt="Network Architecture" width="600">
 
