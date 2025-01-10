@@ -25,43 +25,13 @@ class ResidualBlock(nn.Module):
 class ImageTranslatorGenerator(nn.Module):
     def __init__(self):
         super(ImageTranslatorGenerator, self).__init__()
-
-        self.initial = nn.Sequential(
-            nn.Conv2d(3, 64, kernel_size=7, stride=1, padding=3),
-            nn.BatchNorm2d(64),
-            nn.ReLU(inplace=True)
-        )
-
-        self.down1 = nn.Sequential(
-            nn.Conv2d(64, 128, kernel_size=3, stride=2, padding=1),
-            nn.BatchNorm2d(128),
-            nn.ReLU(inplace=True)
-        )
-
-        self.down2 = nn.Sequential(
-            nn.Conv2d(128, 256, kernel_size=3, stride=2, padding=1),
-            nn.BatchNorm2d(256),
-            nn.ReLU(inplace=True)
-        )
-
+        self.initial = nn.Sequential(nn.Conv2d(3, 64, kernel_size=7, stride=1, padding=3),nn.BatchNorm2d(64),nn.ReLU(inplace=True))
+        self.down1 = nn.Sequential(nn.Conv2d(64, 128, kernel_size=3, stride=2, padding=1),nn.BatchNorm2d(128),nn.ReLU(inplace=True))
+        self.down2 = nn.Sequential(nn.Conv2d(128, 256, kernel_size=3, stride=2, padding=1),nn.BatchNorm2d(256),nn.ReLU(inplace=True))
         self.res_blocks = nn.Sequential(*[ResidualBlock(256) for _ in range(9)])
-
-        self.up1 = nn.Sequential(
-            nn.ConvTranspose2d(256, 128, kernel_size=3, stride=2, padding=1, output_padding=1),
-            nn.BatchNorm2d(128),
-            nn.ReLU(inplace=True)
-        )
-
-        self.up2 = nn.Sequential(
-            nn.ConvTranspose2d(128, 64, kernel_size=3, stride=2, padding=1, output_padding=1),
-            nn.BatchNorm2d(64),
-            nn.ReLU(inplace=True)
-        )
-
-        self.output = nn.Sequential(
-            nn.Conv2d(64, 3, kernel_size=7, stride=1, padding=3),
-            nn.Tanh()
-        )
+        self.up1 = nn.Sequential(nn.ConvTranspose2d(256, 128, kernel_size=3, stride=2, padding=1, output_padding=1),nn.BatchNorm2d(128),nn.ReLU(inplace=True))
+        self.up2 = nn.Sequential(nn.ConvTranspose2d(128, 64, kernel_size=3, stride=2, padding=1, output_padding=1),nn.BatchNorm2d(64),nn.ReLU(inplace=True))
+        self.output = nn.Sequential(nn.Conv2d(64, 3, kernel_size=7, stride=1, padding=3),nn.Tanh())
 
     def forward(self, x):
         x = self.initial(x)
@@ -72,11 +42,9 @@ class ImageTranslatorGenerator(nn.Module):
         x = self.up2(x)
         return self.output(x)
 
-# Discriminator Architecture
 class ImageTranslatorDiscriminator(nn.Module):
     def __init__(self):
         super(ImageTranslatorDiscriminator, self).__init__()
-
         self.conv1 = nn.Conv2d(3, 64, kernel_size=4, stride=2, padding=1)
         self.conv2 = nn.Conv2d(64, 128, kernel_size=4, stride=2, padding=1)
         self.bn2 = nn.BatchNorm2d(128)
@@ -124,8 +92,6 @@ def train(generator, discriminator, dataloader, optimizer_g, optimizer_d, epochs
     for epoch in range(epochs):
         for i, (sketches, images) in enumerate(dataloader):
             sketches, images = sketches.to(device), images.to(device)
-
-            # Train Discriminator
             optimizer_d.zero_grad()
             real_preds = discriminator(images)
             fake_images = generator(sketches)
@@ -168,22 +134,16 @@ def save_generated_images(generator, sketch_dir, output_dir, device):
             generated_image = generator(sketch).squeeze(0).cpu()
             save_image(generated_image, os.path.join(output_dir, f"generated_{sketch_name}"))
 
-# Paths
 sketch_dir = "sketches"
 image_dir = "rimages"
 output_dir = "generated_images"
-
 
 epochs = 500
 batch_size = 16
 learning_rate = 0.0002
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-transform = transforms.Compose([
-    transforms.Resize((256, 256)),
-    transforms.ToTensor(),
-    transforms.Normalize((0.5,), (0.5,))
-])
+transform = transforms.Compose([transforms.Resize((256, 256)),transforms.ToTensor(),transforms.Normalize((0.5,), (0.5,))])
 
 dataset = ImageDataset(sketch_dir, image_dir, transform=transform)
 dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
@@ -192,7 +152,6 @@ discriminator = ImageTranslatorDiscriminator()
 optimizer_g = Adam(generator.parameters(), lr=learning_rate, betas=(0.5, 0.999))
 optimizer_d = Adam(discriminator.parameters(), lr=learning_rate, betas=(0.5, 0.999))
 
-# Train Model
 train(generator, discriminator, dataloader, optimizer_g, optimizer_d, epochs, device)
 
 save_generated_images(generator, sketch_dir, output_dir, device)
