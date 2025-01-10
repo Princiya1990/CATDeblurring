@@ -29,4 +29,6 @@ for filename in os.listdir(input_folder):
             print(f"Processed image saved: {output_image_path}")
         else:
             print(f"Failed to process image: {input_image_path}")
+
+
 print("Batch processing complete!")
