@@ -1,4 +1,4 @@
-# Improving Acne Severity Detection: A GAN Framework with Contour Accentuation for Image Deblurring.
+# Improving Acne Severity Detection: A GAN Framework with Contour Accentuation for Image Deblurring. (Authors Add)
 We present an GAN-powered image processing framework for enhancing and transforming digital sketches. Our approach  leverages Contour Accentuation Techniques (CAT) and Generative Adversarial Networks (GANs) to effectively enhance and deblur sketch contours, enabling accurate transformations into photo-realistic images.
 
 # Sample Output
@@ -38,3 +38,6 @@ git clone https://github.com/Princiya1990/CATDeblurring
    4. The deblurred filenames will be prefixed with **deblurred_**.
   
 4. **To train and run the Image Translator Module**
+   1. For training this module place the skecthes are image pair into their corresponding folder named ```sketches``` and ```images```
+   2. Run ```python sketch_to_image.py```
+   3. After training, the generated images in the ```generated_images/``` folder.
