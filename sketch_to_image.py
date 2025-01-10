@@ -170,7 +170,7 @@ def save_generated_images(generator, sketch_dir, output_dir, device):
 
 # Paths
 sketch_dir = "sketches"
-image_dir = "images"
+image_dir = "rimages"
 output_dir = "generated_images"
 
 
