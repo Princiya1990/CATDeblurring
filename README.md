@@ -19,7 +19,7 @@ We present an GAN-powered image processing framework for enhancing and transform
 # Usage
 Clone the repository using 
 ```bash
-git clone https://github.com/<your-username>/CAT.git](https://github.com/Princiya1990/CATDeblurring
+git clone https://github.com/Princiya1990/CATDeblurring
 ```
 1. **For Running CAT:**
    1. Specify the **input_folder** that has the faceimages and the **output_folder** to get the composite sketches.
@@ -31,3 +31,10 @@ git clone https://github.com/<your-username>/CAT.git](https://github.com/Princiy
    2. Place the folder of blurred sketches in the root directory of this project. Rename it to ```blurred_sketches```
    3. Run ```python deblurring.py```
    
+3. **To Infer and Run the Deblurring Module:**
+   1. Place your Blurred sketches in the folder named **blurred_input**. We prefer (.jpg, .png ) as extensions.
+   2. Run ```python deblur_inference.py```
+   3. Deblurred images are saved in a folder named **deblurred_output**.
+   4. The deblurred filenames will be prefixed with **deblurred_**.
+  
+4. **To train and run the Image Translator Module**
