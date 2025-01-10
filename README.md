@@ -21,10 +21,12 @@ Clone the repository using
 ```bash
 git clone https://github.com/<your-username>/CAT.git](https://github.com/Princiya1990/CATDeblurring
 ```
-1. To Run CAT:
+1. **For Running CAT:**
    1. Specify the **input_folder** that has the faceimages and the **output_folder** to get the composite sketches.
    2. ```python cat.py```
    3. Adjust gamma in the ```adjust_gamma()``` function for brightness/contrast fine-tuning.
     
-2.
+2. **For Training the Deblurring Module:**
+   1. Place the folder of clear sketches in the root directory of this project. Rename it to ```clear_sketches```
+   2. 
    
