@@ -5,6 +5,19 @@ We present an GAN-powered image processing framework for enhancing and transform
 
 <img src="images/Sample Output.PNG" alt="Network Architecture" width="600">
 
+# Module Breakdown
+- **Contour Accentuation Technique (CAT):** Enhances image contours through blending and gamma correction techniques.
+- **Deblurring Module:** Utilizes GANs to restore blurred facial sketches and improve clarity.
+- **Image Translator Module:** Converts sketches into realistic photos while preserving structure and details. 
+
+# Technologies Used
+- Python
+- TensorFlow
+- PyTorch
+- GAN-based architectures
 
 # Usage
-
+Clone the repository using 
+```bash
+git clone https://github.com/<your-username>/CAT.git
+```
