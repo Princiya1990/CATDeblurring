@@ -40,6 +40,21 @@ Clone the repository using
 ```bash
 git clone https://github.com/Princiya1990/CATDeblurring
 ```
+Verify the folder structure
+```
+project_root/
+├── input_images/
+├── output_images/
+├── clear_sketches/
+├── blurred_sketches/
+├── blurred_input/
+├── deblurred_output/
+├── sketches/
+├── rimages/ (for paired real images)
+├── generated_images/
+```
+
+
 1. **For Running CAT:**
    1. Specify the **input_folder** that has the faceimages and the **output_folder** to get the composite sketches.
    2. ```python cat.py```
