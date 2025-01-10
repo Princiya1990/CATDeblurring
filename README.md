@@ -28,5 +28,6 @@ git clone https://github.com/<your-username>/CAT.git](https://github.com/Princiy
     
 2. **For Training the Deblurring Module:**
    1. Place the folder of clear sketches in the root directory of this project. Rename it to ```clear_sketches```
-   2. 
+   2. Place the folder of blurred sketches in the root directory of this project. Rename it to ```blurred_sketches```
+   3. Run ```python deblurring.py```
    
