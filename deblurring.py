@@ -7,58 +7,46 @@ from tensorflow.keras.optimizers import Adam
 import cv2
 
 def residual_block(x, filters):
-    res = Conv2D(filters, kernel_size=3, strides=1, padding='same',
-                 kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
+    res = Conv2D(filters, kernel_size=3, strides=1, padding='same',kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     res = InstanceNormalization()(res)
     res = Activation('relu')(res)
-    res = Conv2D(filters, kernel_size=3, strides=1, padding='same',
-                 kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(res)
+    res = Conv2D(filters, kernel_size=3, strides=1, padding='same',kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(res)
     res = InstanceNormalization()(res)
     return Add()([x, res])
 
 def build_generator():
     inputs = Input(shape=(256, 256, 3))
-    x = Conv2D(64, kernel_size=7, strides=1, padding='same',
-               kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(inputs)
+    x = Conv2D(64, kernel_size=7, strides=1, padding='same',kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(inputs)
     x = InstanceNormalization()(x)
     x = Activation('relu')(x)
-    x = Conv2D(128, kernel_size=3, strides=2, padding='same',
-               kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
+    x = Conv2D(128, kernel_size=3, strides=2, padding='same',kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     x = InstanceNormalization()(x)
     x = Activation('relu')(x)
-    x = Conv2D(256, kernel_size=3, strides=2, padding='same',
-               kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
+    x = Conv2D(256, kernel_size=3, strides=2, padding='same',kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     x = InstanceNormalization()(x)
     x = Activation('relu')(x)
     for _ in range(9):
         x = residual_block(x, 256)
-    x = Conv2DTranspose(128, kernel_size=3, strides=2, padding='same',
-                        kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
+    x = Conv2DTranspose(128, kernel_size=3, strides=2, padding='same',kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     x = InstanceNormalization()(x)
     x = Activation('relu')(x)
-    x = Conv2DTranspose(64, kernel_size=3, strides=2, padding='same',
-                        kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
+    x = Conv2DTranspose(64, kernel_size=3, strides=2, padding='same',kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     x = InstanceNormalization()(x)
     x = Activation('relu')(x)
-    outputs = Conv2D(3, kernel_size=7, strides=1, padding='same', activation='tanh',
-                     kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
+    outputs = Conv2D(3, kernel_size=7, strides=1, padding='same', activation='tanh',kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     return Model(inputs, outputs, name="Generator")
 
 def build_discriminator():
     inputs = Input(shape=(256, 256, 3))
-    x = Conv2D(64, kernel_size=4, strides=2, padding='same',
-               kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(inputs)
+    x = Conv2D(64, kernel_size=4, strides=2, padding='same',kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(inputs)
     x = LeakyReLU(0.2)(x)
-    x = Conv2D(128, kernel_size=4, strides=2, padding='same',
-               kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
+    x = Conv2D(128, kernel_size=4, strides=2, padding='same',kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     x = InstanceNormalization()(x)
     x = LeakyReLU(0.2)(x)
-    x = Conv2D(256, kernel_size=4, strides=2, padding='same',
-               kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
+    x = Conv2D(256, kernel_size=4, strides=2, padding='same',kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     x = InstanceNormalization()(x)
     x = LeakyReLU(0.2)(x)
-    x = Conv2D(512, kernel_size=4, strides=2, padding='same',
-               kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
+    x = Conv2D(512, kernel_size=4, strides=2, padding='same',kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     x = InstanceNormalization()(x)
     x = LeakyReLU(0.2)(x)
     x = GlobalAveragePooling2D()(x)
