@@ -41,3 +41,7 @@ git clone https://github.com/Princiya1990/CATDeblurring
    1. For training this module place the skecthes are image pair into their corresponding folder named ```sketches``` and ```images```
    2. Run ```python sketch_to_image.py```
    3. After training, the generated images in the ```generated_images/``` folder.
+
+# Visual Gallery
+
+
