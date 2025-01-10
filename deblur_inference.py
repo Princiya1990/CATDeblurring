@@ -4,11 +4,8 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 import cv2
 
-
 generator_model_path = "deblurring_generator.h5"
 generator = load_model(generator_model_path, compile=False)
-
-
 
 def preprocess_image(image_path, target_size=(256, 256)):
     image = cv2.imread(image_path)
@@ -19,12 +16,10 @@ def preprocess_image(image_path, target_size=(256, 256)):
         print(f"Failed to load image: {image_path}")
         return None
 
-
 def save_image(image, output_path):
     image = (image * 255).astype(np.uint8)  
     cv2.imwrite(output_path, image)
     print(f"Deblurred image saved: {output_path}")
-
 
 def deblur_images(input_folder, output_folder):
     os.makedirs(output_folder, exist_ok=True)
