@@ -11,6 +11,7 @@ Before running the project, ensure you have the following libraries installed:
 - Python 3.8 or higher
 - TensorFlow 2.x
 - PyTorch 1.x
+- Keras
 - NumPy
 - Matplotlib
 - OpenCV
@@ -20,6 +21,7 @@ To install the required libraries, you can use the following command:
 ```
 pip install tensorflow
 pip install torch
+pip install keras
 pip install numpy
 pip install matplotlib
 pip install opencv-python
