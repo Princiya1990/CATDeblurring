@@ -1,9 +1,7 @@
 import os
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.layers import (Input, Conv2D, LeakyReLU, BatchNormalization, 
-                                     Conv2DTranspose, Add, Activation, Flatten, Dense, 
-                                     InstanceNormalization, GlobalAveragePooling2D)
+from tensorflow.keras.layers import (Input, Conv2D, LeakyReLU, BatchNormalization,Conv2DTranspose, Add, Activation, Flatten, Dense, InstanceNormalization, GlobalAveragePooling2D)
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
 import cv2
@@ -24,56 +22,45 @@ def build_generator():
                kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(inputs)
     x = InstanceNormalization()(x)
     x = Activation('relu')(x)
-
     x = Conv2D(128, kernel_size=3, strides=2, padding='same',
                kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     x = InstanceNormalization()(x)
     x = Activation('relu')(x)
-
     x = Conv2D(256, kernel_size=3, strides=2, padding='same',
                kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     x = InstanceNormalization()(x)
     x = Activation('relu')(x)
-
     for _ in range(9):
         x = residual_block(x, 256)
-
     x = Conv2DTranspose(128, kernel_size=3, strides=2, padding='same',
                         kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     x = InstanceNormalization()(x)
     x = Activation('relu')(x)
-
     x = Conv2DTranspose(64, kernel_size=3, strides=2, padding='same',
                         kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     x = InstanceNormalization()(x)
     x = Activation('relu')(x)
-
     outputs = Conv2D(3, kernel_size=7, strides=1, padding='same', activation='tanh',
                      kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     return Model(inputs, outputs, name="Generator")
 
 def build_discriminator():
     inputs = Input(shape=(256, 256, 3))
-
     x = Conv2D(64, kernel_size=4, strides=2, padding='same',
                kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(inputs)
     x = LeakyReLU(0.2)(x)
-
     x = Conv2D(128, kernel_size=4, strides=2, padding='same',
                kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     x = InstanceNormalization()(x)
     x = LeakyReLU(0.2)(x)
-
     x = Conv2D(256, kernel_size=4, strides=2, padding='same',
                kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     x = InstanceNormalization()(x)
     x = LeakyReLU(0.2)(x)
-
     x = Conv2D(512, kernel_size=4, strides=2, padding='same',
                kernel_initializer=tf.keras.initializers.RandomNormal(mean=0.0, stddev=0.02))(x)
     x = InstanceNormalization()(x)
     x = LeakyReLU(0.2)(x)
-
     x = GlobalAveragePooling2D()(x)
     outputs = Dense(1)(x) 
     return Model(inputs, outputs, name="Discriminator")
@@ -99,25 +86,18 @@ def train(generator, discriminator, blurred_images, clear_images, epochs, batch_
         for i in range(0, len(blurred_images), batch_size):
             blurred_batch = blurred_images[i:i + batch_size]
             clear_batch = clear_images[i:i + batch_size]
-
             fake_images = generator.predict(blurred_batch)
-
             real_labels = -np.ones((len(clear_batch), 1))  
             fake_labels = np.ones((len(fake_images), 1))  
             d_loss_real = discriminator.train_on_batch(clear_batch, real_labels)
             d_loss_fake = discriminator.train_on_batch(fake_images, fake_labels)
             d_loss = d_loss_real + d_loss_fake
-
             misleading_labels = -np.ones((len(blurred_batch), 1))  
             g_loss = generator.train_on_batch(blurred_batch, misleading_labels)
-
             print(f"Batch {i // batch_size + 1}: D Loss: {d_loss:.4f}, G Loss: {g_loss:.4f}")
 
 
 def blur_images(input_folder, output_folder):
-    """
-    Apply Gaussian blur to images in the input folder and save them to the output folder.
-    """
     os.makedirs(output_folder, exist_ok=True)
     
     for filename in os.listdir(input_folder):
@@ -131,18 +111,13 @@ def blur_images(input_folder, output_folder):
                 print(f"Blurred image saved: {output_path}")
             else:
                 print(f"Failed to load image: {img_path}")
-
                 
 blurred_folder = "blurred_sketches"
 clear_folder = "clear_sketches"
 blur_images(clear_folder, blurred_folder)  # Create blurred images
 blurred_images = load_images(blurred_folder)
 clear_images = load_images(clear_folder)
-
 generator = build_generator()
 discriminator = build_discriminator()
-
 discriminator.compile(optimizer=Adam(0.0002, 0.5, 0.999), loss=wasserstein_loss)
-
-
 train(generator, discriminator, blurred_images, clear_images, epochs=500, batch_size=16)
