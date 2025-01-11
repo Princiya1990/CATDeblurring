@@ -19,12 +19,7 @@ Before running the project, ensure you have the following libraries installed:
 # Installation
 To install the required libraries, you can use the following command:
 ```
-pip install tensorflow
-pip install torch
-pip install keras
-pip install numpy
-pip install matplotlib
-pip install opencv-python
+pip install -r requirements.txt
 ```
 # Module Breakdown
 - **Contour Accentuation Technique (CAT):** Enhances image contours through blending and gamma correction techniques.
