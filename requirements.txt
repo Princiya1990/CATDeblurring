@@ -1,0 +1,6 @@
+numpy==1.23.5
+opencv-python==4.8.0.74
+tensorflow==2.10.0
+keras==2.10.0
+torch==1.13.1
+matplotlib==3.6.2
