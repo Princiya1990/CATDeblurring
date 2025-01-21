@@ -58,7 +58,7 @@ project_root/
    
   
 4. **To train and run the Image Translator Module**
-   1. Go to the Image Tranlator Module ```cd imagetranslatormodule```
+   1. Go to the Image Translator Module ```cd imagetranslatormodule```
    2. Place your dataset inside the data/CUHK folder (You can modify the folder if required)
    3. Execute ```python sketch_to_image.py```
 
