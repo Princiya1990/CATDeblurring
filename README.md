@@ -49,17 +49,14 @@ project_root/
    2. ```python cat.py```
    3. Adjust gamma in the ```adjust_gamma()``` function for brightness/contrast fine-tuning.
     
-2. **For Training the Deblurring Module:**
+2. **For Training and running the Deblurring Module:**
    1. Place the folder of clear sketches in the root directory of this project. Rename it to ```clear_sketches```
    2. Place the folder of blurred sketches in the root directory of this project. Rename it to ```blurred_sketches```
-   3. Run ```python deblurring.py```
-   
-3. **To Infer and Run the Deblurring Module:**
-   
+   3. Run ```python deblurring.py```      
   
-4. **To train and run the Image Translator Module**
+3. **To train and run the Image Translator Module**
    1. Go to the Image Translator Module ```cd imagetranslatormodule```
-   2. Place your dataset inside the data/CUHK folder (You can modify the folder if required)
+   2. Place your dataset inside the data/dataset folder (test and train)
    3. Execute ```python sketch_to_image.py```
    4. The results are present in the ```/code/results``` folder.
 
