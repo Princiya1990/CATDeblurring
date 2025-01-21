@@ -53,6 +53,7 @@ project_root/
    1. Place the folder of clear sketches in the root directory of this project. Rename it to ```clear_sketches```
    2. Place the folder of blurred sketches in the root directory of this project. Rename it to ```blurred_sketches```
    3. Run ```python deblurring.py```
+   4. The results are present in the ```/code/results``` folder.
    
 3. **To Infer and Run the Deblurring Module:**
    
