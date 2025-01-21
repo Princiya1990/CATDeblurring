@@ -53,7 +53,6 @@ project_root/
    1. Place the folder of clear sketches in the root directory of this project. Rename it to ```clear_sketches```
    2. Place the folder of blurred sketches in the root directory of this project. Rename it to ```blurred_sketches```
    3. Run ```python deblurring.py```
-   4. The results are present in the ```/code/results``` folder.
    
 3. **To Infer and Run the Deblurring Module:**
    
@@ -62,6 +61,7 @@ project_root/
    1. Go to the Image Translator Module ```cd imagetranslatormodule```
    2. Place your dataset inside the data/CUHK folder (You can modify the folder if required)
    3. Execute ```python sketch_to_image.py```
+   4. The results are present in the ```/code/results``` folder.
 
 # Visual Gallery
 Here we've shown sample images of the deblurring process across the adopted datasets, transitioning from Ground images to Blurred inputs.
