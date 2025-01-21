@@ -6,15 +6,7 @@ We present an GAN-powered image processing framework for enhancing and transform
 
 <img src="images/Sample Output.PNG" alt="Network Architecture" width="600">
 
-## Requirements
-Before running the project, ensure you have the following libraries installed:
-- Python 3.8 or higher
-- TensorFlow 2.x
-- PyTorch 1.x
-- Keras
-- NumPy
-- Matplotlib
-- OpenCV
+
 
 # Installation
 To install the required libraries, you can use the following command:
