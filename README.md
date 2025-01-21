@@ -39,7 +39,7 @@ project_root/
 ├── blurred_input/
 ├── deblurred_output/
 ├── sketches/
-├── rimages/ (for paired real images)
+├── images
 ├── generated_images/
 ```
 
@@ -55,18 +55,12 @@ project_root/
    3. Run ```python deblurring.py```
    
 3. **To Infer and Run the Deblurring Module:**
-   1. Place your Blurred sketches in the folder named **blurred_input**. We prefer (.jpg, .png ) as extensions.
-   2. Run ```python deblur_inference.py```
-   3. Deblurred images are saved in a folder named **deblurred_output**.
-   4. The deblurred filenames will be prefixed with **deblurred_**.
+   
   
 4. **To train and run the Image Translator Module**
-   1. For training this module place the skecthes are image pair into their corresponding folder named ```sketches``` and ```images```
-   2. Run ```python sketch_to_image.py```
-   3. After training, the generated images in the ```generated_images/``` folder.
-
-# Hyper-parameters
-The hyperparameters used for training are defined within the ```.py``` file itself and can be easily modified as needed to suit your specific requirements. Adjustments can be made to optimize model performance for your dataset or application.
+   1. Go to the Image Tranlator Module ```cd imagetranslatormodule```
+   2. Place your dataset inside the data/CUHK folder (You can modify the folder if required)
+   3. Execute ```python sketch_to_image.py```
 
 # Visual Gallery
 Here we've shown sample images of the deblurring process across the adopted datasets, transitioning from Ground images to Blurred inputs.
