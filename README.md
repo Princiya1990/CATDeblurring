@@ -34,10 +34,8 @@ Verify the folder structure
 project_root/
 ├── input_images/
 ├── output_images/
-├── clear_sketches/
-├── blurred_sketches/
-├── blurred_input/
-├── deblurred_output/
+├── deblurringmodule
+├── imagetranslatormodule
 ├── sketches/
 ├── images
 ├── generated_images/
