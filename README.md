@@ -36,9 +36,6 @@ project_root/
 ├── output_images/
 ├── deblurringmodule
 ├── imagetranslatormodule
-├── sketches/
-├── images
-├── generated_images/
 ```
 
 
