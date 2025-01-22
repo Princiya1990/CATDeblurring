@@ -42,8 +42,9 @@ The datasets for our code are found in
 
 1. **For Running CAT:**
    1. Go to the contouraccentuation module ```cd contouraccentuation```
-   2. Introduce Artifical Blurring by executing the ```python blur.py``` 
-   3. run ```python cat.py```
+   2. Place your images in the ```input_images``` folder
+   3. Introduce Artifical Blurring by executing the ```python blur.py``` 
+   4. run ```python cat.py```
    3. Adjust gamma in the ```adjust_gamma()``` if required function for brightness/contrast fine-tuning.
     
 2. **For the Deblurring Module:**
