@@ -14,7 +14,7 @@ def adjust_gamma(image, gamma=1.0):
     table = np.array([((i / 255.0) ** invGamma) * 255 for i in np.arange(0, 256)]).astype("uint8")
     return cv2.LUT(image, table)
 
-input_folder = "input_images"  # Replace with your input folder path
+input_folder = "blurred_images"  # Replace with your input folder path
 output_folder = "blurred_sketches"  # Replace with your output folder path
 os.makedirs(output_folder, exist_ok=True)
 
