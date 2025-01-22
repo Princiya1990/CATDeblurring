@@ -54,7 +54,7 @@ The datasets for our code are found in
   
 3. **To train and run the Image Translator Module**
    1. Go to the Image Translator Module ```cd imagetranslatormodule```
-   2. Place your dataset inside the data/dataset folder (test and train)
+   2. Place your dataset inside the data/dataset folder (test and train) [Your photos should go in the photos folder and your sketches should go in the sketches folder]
    3. Execute ```python sketch_to_image.py```
    4. The results are present in the ```/code/results``` folder.
 
