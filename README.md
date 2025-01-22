@@ -32,19 +32,28 @@ git clone https://github.com/Princiya1990/CATDeblurring
 Verify the folder structure
 ```
 project_root/
+<<<<<<< HEAD
+├── contouraccentuation/
+├── deblurringmodule/
+├── imagetranslatormodule/
+├── images
+=======
 ├── input_images/
 ├── output_images/
 ├── deblurringmodule
 ├── imagetranslatormodule
+>>>>>>> ea7cc85f4e862642add0ebc5e443af4f9886e18d
 ```
-
+## Datasets
+The datasets for our code are found in  
 
 1. **For Running CAT:**
-   1. Specify the **input_folder** that has the faceimages and the **output_folder** to get the composite sketches.
-   2. ```python cat.py```
-   3. Adjust gamma in the ```adjust_gamma()``` function for brightness/contrast fine-tuning.
+   1. Go to the contouraccentuation module ```cd contouraccentuation```
+   2. Introduce Artifical Blurring by executing the ```python blur.py``` 
+   3. run ```python cat.py```
+   3. Adjust gamma in the ```adjust_gamma()``` if required function for brightness/contrast fine-tuning.
     
-2. **For Training and running the Deblurring Module:**
+2. **For the Deblurring Module:**
    1. Place the folder of clear sketches in the root directory of this project. Rename it to ```clear_sketches```
    2. Place the folder of blurred sketches in the root directory of this project. Rename it to ```blurred_sketches```
    3. Run ```python deblurring.py```      
@@ -56,7 +65,7 @@ project_root/
    4. The results are present in the ```/code/results``` folder.
 
 # Visual Gallery
-Here we've shown sample images of the deblurring process across the adopted datasets, transitioning from Ground images to Blurred inputs.
+Here we've shown some sample images of the deblurring process across the adopted datasets, transitioning from blurred inputs to deblurred photos.
 
 <img src="images/gallery.PNG" alt="Network Architecture" width="600">
 
