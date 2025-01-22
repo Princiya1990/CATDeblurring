@@ -32,17 +32,10 @@ git clone https://github.com/Princiya1990/CATDeblurring
 Verify the folder structure
 ```
 project_root/
-<<<<<<< HEAD
 ├── contouraccentuation/
 ├── deblurringmodule/
 ├── imagetranslatormodule/
 ├── images
-=======
-├── input_images/
-├── output_images/
-├── deblurringmodule
-├── imagetranslatormodule
->>>>>>> ea7cc85f4e862642add0ebc5e443af4f9886e18d
 ```
 ## Datasets
 The datasets for our code are found in  
