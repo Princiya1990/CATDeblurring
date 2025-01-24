@@ -43,7 +43,7 @@ project_root/
 3. AR: https://drive.google.com/drive/folders/1t3EgNgA1PdJZqDcenVCpjmXvVQ8VwouI?usp=sharing
 4. XM2GTS: https://drive.google.com/drive/folders/1l_wPPVDg-_7GM0QIqh-BXx10QAWCivt7?usp=sharing
 
-##Prcoess Flow
+## How to Run
 1. **For Running CAT:**
    1. Go to the contouraccentuation module ```cd contouraccentuation```
    2. Place your images in the ```input_images``` folder
