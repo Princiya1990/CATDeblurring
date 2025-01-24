@@ -55,9 +55,9 @@ The datasets for our code are found in
 3. **To train and run the Image Translator Module**
    1. Go to the Image Translator Module ```cd imagetranslatormodule```
    2. Organize your dataset as follows:
-        a. Place all photos in the photos folder.
-        b.Place all sketches in the sketches folder.
-   c.Example folder structure:
+        -Place all photos in the photos folder.
+        -Place all sketches in the sketches folder.
+        -Example folder structure:
 ```
       data/
               dataset/
