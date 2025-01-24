@@ -38,7 +38,7 @@ project_root/
 ├── images
 ```
 ## Datasets
-The datasets for our code are found in  
+The datasets for our code are found in  https://shorturl.at/DiN4G
 
 1. **For Running CAT:**
    1. Go to the contouraccentuation module ```cd contouraccentuation```
@@ -48,9 +48,21 @@ The datasets for our code are found in
    3. Adjust gamma in the ```adjust_gamma()``` if required function for brightness/contrast fine-tuning.
     
 2. **For the Deblurring Module:**
-   1. Place the folder of clear sketches in the root directory of this project. Rename it to ```clear_sketches```
-   2. Place the folder of blurred sketches in the root directory of this project. Rename it to ```blurred_sketches```
-   3. Run ```python deblurring.py```      
+   1. Go to the Deblurring Module ```cd deblurringmodule```
+   2. Organize your dataset as follows: (Example folder structure):
+```
+              datasets/
+                blurred/
+                   blur_01.jpg
+                   blur_02.jpg
+                   ...
+                clear/
+                   clear_01.jpg
+                   clear_02.jpg
+                    ...
+```      
+   3. Place the folder of blurred sketches in the ```test``` directory of this project.
+   4. Run ```python deblur.py```      
   
 3. **To train and run the Image Translator Module**
    1. Go to the Image Translator Module ```cd imagetranslatormodule```
