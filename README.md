@@ -54,9 +54,24 @@ The datasets for our code are found in
   
 3. **To train and run the Image Translator Module**
    1. Go to the Image Translator Module ```cd imagetranslatormodule```
-   2. Place your dataset inside the data/dataset folder (test and train) [Your photos should go in the photos folder and your sketches should go in the sketches folder]
-   3. Execute ```python sketch_to_image.py```
-   4. The results are present in the ```/code/results``` folder.
+   2. Organize your dataset as follows:
+        a. Place all photos in the photos folder.
+        b.Place all sketches in the sketches folder.
+   c.Example folder structure:
+```
+      data/
+              dataset/
+                photos/
+                   photo_01.jpg
+                   photo_02.jpg
+                   ...
+                sketches/
+                   sketch_01.jpg
+                   sketch_02.jpg
+                    ...
+```
+   4. Execute ```python sketch_to_image.py```
+   5. The results are present in the ```/code/results``` folder.
 
 # Visual Gallery
 Here we've shown some sample images of the deblurring process across the adopted datasets, transitioning from blurred inputs to deblurred photos.
