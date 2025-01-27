@@ -57,13 +57,17 @@ project_root/
 ```
               datasets/
                 blurred/
-                   blur_01.jpg
-                   blur_02.jpg
+                  train/
+                   blur_img1.jpg
+                   blur_img2.jpg
                    ...
                 clear/
-                   clear_01.jpg
-                   clear_02.jpg
+                  train/
+                   clear_img1.jpg
+                   clear_img2.jpg
                     ...
+                  blur2clear/
+                     train/
 ```      
    3. Place the folder of blurred sketches in the ```test``` directory of this project to deblur them.
    4. Run ```python deblur.py```      
