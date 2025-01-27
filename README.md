@@ -55,7 +55,8 @@ project_root/
    1. Go to the Deblurring Module ```cd deblurringmodule```
    2. Organize your dataset as follows: (Example folder structure):
 ```
-              datasets/
+           results/
+           datasets/
                 blurred/
                   train/
                    blur_img1.jpg
@@ -66,8 +67,10 @@ project_root/
                    clear_img1.jpg
                    clear_img2.jpg
                     ...
-                  blur2clear/
+                blur2clear/
                      train/
+           test/
+                    
 ```      
    3. Place the folder of blurred sketches in the ```test``` directory of this project to deblur them.
    4. Run ```python deblur.py```      
