@@ -73,7 +73,8 @@ project_root/
                     
 ```      
    3. Place the folder of blurred sketches in the ```test``` directory of this project to deblur them.
-   4. Run ```python deblur.py```      
+   4. Run ```python deblur.py```
+   5. All the results area be stored under a folder named```results```.   
   
 3. **To train and run the Image Translator Module**
    1. Go to the Image Translator Module ```cd imagetranslatormodule```
